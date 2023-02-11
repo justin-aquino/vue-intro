@@ -16,13 +16,26 @@
   </head>
   <body>
     <div id="app">
-      <input type="text" v-model="name" />
+      <!-- <input type="text" v-model="name" /> -->
       <!--v-model attribute is vue specific. Changes the data in vue and automatically changes display. Usually for input fields-->
-      <h1 v-bind:class="headerClass">Hello, {{name}}</h1>
+      <!-- <h1 v-bind:class="headerClass">Hello, {{name}}</h1> -->
       <!--you can store classes in main.js and bind them in html-->
-      <p>{{greetings}}</p>
+      <!-- <p>{{greetings}}</p>
+      <h2>{{count}}</h2>
+      <button type="button" @onclick="increment">+ Increment</button> -->
+      <!--if you're referring to an event, you can use @ instead of v:-->
+      <!-- <button type="button" @onclick="decrement">- Decrement</button> -->
       <!--You dont have to add the ()-->
+      <form @submit.prevent="submitHandler">
+        <input type="text" v-model="inputTask" />
+        <button type="submit">Add To Task</button>
+      </form>
+      <div class="text-red" v-show="tasks.length === 0">No items yet</div>
+      <ul>
+        <li v-for="item in tasks">{{ item }}</li>
+      </ul>
     </div>
+
     <script src="https://unpkg.com/vue@3"></script>
     <script src="main.js"></script>
   </body>
